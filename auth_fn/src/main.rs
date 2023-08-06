@@ -16,7 +16,7 @@ async fn main() -> Result<(), Error> {
         .init();
 
     let Ok(table_name) = std::env::var("TABLE_NAME") else {
-        return Err(CustomError::new("ENV VAR TABLE_NAME no set").into())
+        return Err(CustomError::new("ENV VAR TABLE_NAME not set").into())
     };
     let db_client = DbClient::new(&table_name).await;
     let session_store = DynamoSessionStore::new(db_client.clone()).await;

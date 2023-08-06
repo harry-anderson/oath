@@ -72,11 +72,17 @@ pub async fn oauth_redirect(
     let callback_url = format!("https://{host}{path}");
     info!("callback url: {}", callback_url);
 
+    let (Ok(gh_client_id), Ok(gh_client_secret)) = 
+        (std::env::var("PARAM_GITHUB_CLIENT_ID"), 
+         std::env::var("PARAM_GITHUB_CLIENT_SECRET")) else {
+        return Err(CustomError::new("OAUTH PARMS not set").into())
+    };
+
     let res = ssm_client
         .get_parameters()
         .with_decryption(true)
-        .names("/oath/dev/oauth/github/client_id") //TODO parameterize
-        .names("/oath/dev/oauth/github/client_secret")
+        .names(gh_client_id) //TODO parameterize
+        .names(gh_client_secret)
         .send()
         .await
         .unwrap();
@@ -121,7 +127,6 @@ pub async fn oauth_callback(
     session_store: &DynamoSessionStore,
     event: LambdaEvent<Request>,
 ) -> Result<Response, Error> {
-    info!("event={:?}", event);
     let host = event
         .payload
         .headers

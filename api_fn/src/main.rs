@@ -22,15 +22,12 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn function_handler(event: LambdaEvent<Request>) -> Result<Response, Error> {
-    // info!("{:?}", event);
-
     let Some(auth_ctx) = event.payload.request_context.authorizer else {
         return Ok(html_response(403, Some(Body::Text(String::from("<p>Forbidden</p>")))));
     };
     let Some(email) = &auth_ctx.lambda.get("email") else {
         return Ok(html_response(403, Some(Body::Text(String::from("<p>Forbidden</p>")))));
     };
-    info!("email {:?}", email);
     let res = html_response(200, Some(Body::Text(format!("<h1>hello {email}</h1>"))));
     Ok(res)
 }

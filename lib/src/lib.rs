@@ -5,8 +5,9 @@ pub mod session;
 pub mod model;
 pub mod helpers;
 
-// const GOOGLE_AUTH_URL: &'static str = "https://accounts.google.com/o/oauth2/v2/auth";
-// const GOOGLE_TOKEN_URL: &'static str = "https://www.googleapis.com/oauth2/v3/token";
-// const GOOGLE_REVOKE_URL: &'static str = "https://oauth2.googleapis.com/revoke";
+// TODO add google mod
+// const GOOGLE_AUTH_URL: &str = "https://accounts.google.com/o/oauth2/v2/auth";
+// const GOOGLE_TOKEN_URL: &str = "https://www.googleapis.com/oauth2/v3/token";
+// const GOOGLE_REVOKE_URL: &str = "https://oauth2.googleapis.com/revoke";
 //
 

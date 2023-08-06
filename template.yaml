@@ -5,11 +5,8 @@ Description: >
 
 # SSM Parameters OUTSIDE THE TEMPLATE
 #
-# oath/dev/oauth/google/client_id
-# oath/dev/oauth/google/client_secret
-# oath/dev/oauth/google/auth_url
-# oath/dev/oauth/google/callback_url
-# oath/dev/oauth/google/token_url
+# /oath/dev/oauth/github/client_id
+# /oath/dev/oauth/github/client_secret
 
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
@@ -20,6 +17,8 @@ Globals:
       Variables:
         RUST_BACKTRACE: 1
         TABLE_NAME: !Ref SessionTable
+        PARAM_GITHUB_CLIENT_ID: /oath/dev/oauth/github/client_id
+        PARAM_GITHUB_CLIENT_SECRET: /oath/dev/oauth/github/client_secret
     Architectures:
       - arm64
 
