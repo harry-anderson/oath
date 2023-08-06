@@ -1,0 +1,10 @@
+#!/bin/bash
+# usage: ./put_param /oath/test/oath/foodbar z0rd ap-southeast-1 default
+
+aws ssm put-parameter \
+    --name "$1" \
+    --type "SecureString" \
+    --value "$2" \
+    --region "$3"\
+    --profile "$4" \
+    --overwrite

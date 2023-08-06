@@ -1,0 +1,7 @@
+#!/bin/bash
+# usage: $ ./get_param /oath/test/oath/foodbar ap-southeast-1 default
+aws ssm get-parameter \
+    --name "$1" \
+    --with-decryption \
+    --region "$2"\
+    --profile "$3" 
